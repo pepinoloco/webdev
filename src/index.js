@@ -1,14 +1,14 @@
-// Import react and react-dom
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react'
+import { createRoot } from 'react-dom/client';
 
-// Create a react component
+const root = createRoot(document.getElementById('root'));
+
 const App = () => {
-    return <div>Hi there!</div>;
+  return <div>Hi there!</div>;
 }
 
-// Show the react component on the screen
-ReactDOM.render(
-    <App />,
-    document.querySelector('#root')
+root.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
