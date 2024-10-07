@@ -1,0 +1,59 @@
+1.)
+C:\workspace-UT-React-Jan-2021\Session3\Example3-Version3\jsx\src\index.js
+async function testIt() {
+    let values = [10, 20, 30, 40, 50];
+    let total = await asyncAdd(values);//break
+    console.log(`Main Total: ${total}`);
+    
+}
+
+2.)
+C:\workspace-UT-React-Jan-2021\Session3\Example3-Version3\jsx\src\async.js
+import { sumValues } from "./sum";
+
+export function asyncAdd(values) {
+    return new Promise(callback =>
+        setTimeout( () => {
+            let total = sumValues(values);//break
+            console.log(`Async Total: ${total}`);
+            callback(total);
+        },500));
+}
+
+3.)
+C:\workspace-UT-React-Jan-2021\Session3\Example3-Version3\jsx\src\sum.js
+export function sumValues (values) {
+    return values.reduce((total, val) => total + val, 0);
+}
+
+export default function sumOdd(values) {
+    return sumValues(values.filter((item, index) => index % 2 === 0));//break
+}
+
+4.)
+C:\workspace-UT-React-Jan-2021\Session3\Example3-Version3\jsx\src\async.js
+import { sumValues } from "./sum";
+
+export function asyncAdd(values) {
+    return new Promise(callback =>
+        setTimeout( () => {
+            let total = sumValues(values);
+            console.log(`Async Total: ${total}`);//break
+            callback(total);
+        },500));
+}
+
+5.)
+google console:
+Async Total: 150
+
+6.)
+C:\workspace-UT-React-Jan-2021\Session3\Example3-Version3\jsx\src\index.js
+async function testIt() {
+    let values = [10, 20, 30, 40, 50];
+    let total = await asyncAdd(values);
+    console.log(`Main Total: ${total}`);//break
+
+7.)
+google console:
+Main Total:150

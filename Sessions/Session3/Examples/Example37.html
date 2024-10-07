@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button.</p>
+
+<button onclick="printItems()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+
+function printItems() {
+	console.log(userId(user)); // 42
+	console.log(whois(user));  // "jdoe is John"
+}
+
+const user = {
+  id: 42,
+  displayName: 'jdoe',
+  fullName: {
+    firstName: 'John',
+    lastName: 'Doe'
+  }
+};
+
+function userId({id}) {
+  return id;
+}
+
+function whois({displayName, fullName: {firstName: name}}) {
+  return `${displayName} is ${name}`;
+}
+
+
+
+</script>
+
+</body>
+</html>
+
+
+

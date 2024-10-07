@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button.</p>
+
+<button onclick="printItems()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+function printItems() {
+	const person = {
+		name: 'Max'
+	};
+
+	const newPerson = {
+		...person,
+		age: 28
+
+	};
+
+	console.log(newPerson);
+}
+
+
+</script>
+
+</body>
+</html>
+
+
+

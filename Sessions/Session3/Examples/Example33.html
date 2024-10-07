@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button.</p>
+
+<button onclick="printItems()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+
+function printItems() {
+	const x = [1, 2, 3, 4, 5];
+	const [y, z] = x;
+	console.log(y); // 1
+	console.log(z); // 2
+
+	const foo = ['one', 'two', 'three'];
+
+	const [red, yellow, green] = foo;
+	console.log(red); // "one"
+	console.log(yellow); // "two"
+	console.log(green); // "three"
+}
+
+</script>
+
+</body>
+</html>
+
+
+

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button.</p>
+
+<button onclick="printItems()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+
+function printItems() {
+	const user = {
+    id: 42,
+    is_verified: true
+	};
+
+	const {id, is_verified} = user;
+
+	console.log(id); // 42
+	console.log(is_verified); // true
+}
+
+
+</script>
+
+</body>
+</html>
+
+
+
