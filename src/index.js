@@ -4,8 +4,6 @@ import { createRoot } from 'react-dom/client';
 const root = createRoot(document.getElementById('root'));
 
 const App = () => {
-
-/*
   const buttonText = { text: 'Click me' };
   const style = { backgroundColor: "blue", color: "white" };
 
@@ -16,8 +14,6 @@ const App = () => {
       <button style={style}>{buttonText.text}</button>
     </div>
   );
-*/
-	return <div>Hi there</div>
 }
 
 root.render(
