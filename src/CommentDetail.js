@@ -1,5 +1,4 @@
 const CommentDetail = (props) => {
-  console.log(props);
   return (
     <div className="comment">
       <a href="/" className="avatar">
