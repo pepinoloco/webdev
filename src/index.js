@@ -1,21 +1,19 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client';
 
-const root = createRoot(document.getElementById('root'));
+import CommentDetail from './CommentDetail';
 
 const App = () => {
-  const buttonText = { text: 'Click me' };
-  const style = { backgroundColor: "blue", color: "white" };
-
   return (
-    <div>
-      <label className="label" htmlFor="name">Enter name:</label>
-      <input id="name" type="text" />
-      <button style={style}>{buttonText.text}</button>
+    <div className="ui container comments">
+      <CommentDetail author="Sam" timeAgo="Today at 4:45PM" content="Nice blog post"/>
+      <CommentDetail author="Jane" timeAgo="Today at 2:00AM" content="I like the subject"/>
+      <CommentDetail author="Alex" timeAgo="Yesterday at 5:00PM" content="I like React"/>
     </div>
   );
 }
 
+const root = createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
