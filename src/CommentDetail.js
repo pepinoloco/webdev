@@ -2,7 +2,7 @@ const CommentDetail = (props) => {
   return (
     <div className="comment">
       <a href="/" className="avatar">
-        <img alt="avatar" src=""/>
+        <img alt="avatar" src="https://picsum.photos/200/300"/>
       </a>
       <div className="content">
         <a href="/" className="author">{props.author}</a>
