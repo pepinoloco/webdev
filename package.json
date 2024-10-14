@@ -28,5 +28,8 @@
       "last 1 chrome version",
       "last 1 firefox version"
     ]
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
   }
 }
