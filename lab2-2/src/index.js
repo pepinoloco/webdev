@@ -1,10 +1,12 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client';
 
+import Message from './Message';
+
 const App = () => {
   return (
     <div>
-       <p>Assignment</p>
+      <Message header="Attention!" text="We did an update." />
     </div>
   );
 }
