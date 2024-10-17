@@ -1,1 +1,1 @@
-find Sessions/Session1-2 -name "$1" | sort
+find "$1" -name "$2" | sort
