@@ -15,62 +15,60 @@
   </style>
   <script>
     function validateForm() {
-      var isAlert = false
-      var x = document.forms["identification"]["firstName"].value
-      var e = document.getElementById("firstNameAlert")
+      var isFormComplete = true;
+
+      var x = document.forms["identification"]["firstName"].value;
+      var e = document.getElementById("firstNameAlert");
       if (x == "") {
-        setAlertClass(e, "alert-msg")
-        isAlert = true
+        setAlertClass(e, "alert-msg");
+        isFormComplete = false;
       }
       else {
-        setAlertClass(e, "hidden-msg")
+        setAlertClass(e, "hidden-msg");
       }
 
-      x = document.forms["identification"]["lastName"].value
-      e = document.getElementById("lastNameAlert")
+      x = document.forms["identification"]["lastName"].value;
+      e = document.getElementById("lastNameAlert");
       if (x == "") {
-        setAlertClass(e, "alert-msg")
-        isAlert = true
+        setAlertClass(e, "alert-msg");
+        isFormComplete = false;
       }
       else {
-        setAlertClass(e, "hidden-msg")
+        setAlertClass(e, "hidden-msg");
       }
 
-      x = document.forms["identification"]["gender"].value
-      e = document.getElementById("genderAlert")
+      x = document.forms["identification"]["gender"].value;
+      e = document.getElementById("genderAlert");
       if (x == "") {
-        setAlertClass(e, "alert-msg")
-        isAlert = true
+        setAlertClass(e, "alert-msg");
+        isFormComplete = false;
       }
       else {
-        setAlertClass(e, "hidden-msg")
+        setAlertClass(e, "hidden-msg");
       }
 
-      let emp1 = document.forms["identification"]["employment1"].checked
-      let emp2 = document.forms["identification"]["employment2"].checked
-      e = document.getElementById("employmentAlert")
+      let emp1 = document.forms["identification"]["employment1"].checked;
+      let emp2 = document.forms["identification"]["employment2"].checked;
+      e = document.getElementById("employmentAlert");
       if (!emp1 && !emp2) {
-        setAlertClass(e, "alert-msg")
-        isAlert = true
+        setAlertClass(e, "alert-msg");
+        isFormComplete = false;
       }
       else {
-        setAlertClass(e, "hidden-msg")
+        setAlertClass(e, "hidden-msg");
       }
 
-      x = document.forms["identification"]["carType"].value
-      e = document.getElementById("carTypeAlert")
+      x = document.forms["identification"]["carType"].value;
+      e = document.getElementById("carTypeAlert");
       if (x == "selectcar") {
-        setAlertClass(e, "alert-msg")
-        isAlert = true
+        setAlertClass(e, "alert-msg");
+        isFormComplete = false;
       }
       else {
-        setAlertClass(e, "hidden-msg")
+        setAlertClass(e, "hidden-msg");
       }
 
-      if (isAlert)
-        return false;
-      else
-        return true;
+      return isFormComplete;
     }
 
     function setAlertClass(alertElement, newClass) {
