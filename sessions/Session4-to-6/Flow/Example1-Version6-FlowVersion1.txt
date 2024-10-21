@@ -1,0 +1,79 @@
+1.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version6\seasons\src\index.js
+    constructor(props) {
+        super(props);
+
+        //THIS IS THE ONLY TIME we do direct assignment
+        // to this.state
+        this.state = { lat:null, errorMessage: ''};//break
+
+        window.navigator.geolocation.getCurrentPosition(
+            (position) => {
+                 console.log(position)
+                //we called setState
+                this.setState({ lat: position.coords.latitude})
+
+                // we do not do this!!
+                //this.state.lat = position.coords.latitude
+            },
+            (err) =>  {
+                    console.log(err)
+                    this.setState( { errorMessage: err.message})
+            }
+        );
+
+    }
+
+2.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version6\seasons\src\index.js
+   //React says we have to define render!!
+    render() {
+        
+        return (
+                <div> //break
+                    Latitude: {this.state.lat} 
+                <br />
+                Error: { this.state.errorMessage }
+                </div>
+            );
+    }
+
+ 3.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version6\seasons\src\index.js
+    constructor(props) {
+        super(props);
+
+        //THIS IS THE ONLY TIME we do direct assignment
+        // to this.state
+        this.state = { lat:null, errorMessage: ''};
+
+        window.navigator.geolocation.getCurrentPosition(
+            (position) => {
+                 console.log(position)
+                //we called setState
+                this.setState({ lat: position.coords.latitude})
+
+                // we do not do this!!
+                //this.state.lat = position.coords.latitude
+            },
+            (err) =>  {
+                    console.log(err) 
+                    this.setState( { errorMessage: err.message})//break
+            }
+        );
+
+    }
+
+4.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version6\seasons\src\index.js
+   //React says we have to define render!!
+    render() {
+        
+        return (
+                <div>
+                    Latitude: {this.state.lat} 
+                <br />
+                Error: { this.state.errorMessage }//break
+                </div>
+            );
+    }

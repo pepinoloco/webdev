@@ -1,0 +1,64 @@
+1.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version5\seasons\src\index.js
+
+ReactDOM.render(
+    <App />,//break
+    document.querySelector('#root')
+);
+
+2.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version5\seasons\src\index.js
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+
+class App extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = { lat:null};//break
+
+        window.navigator.geolocation.getCurrentPosition(
+            (position) => {
+                 console.log(position)
+                //we called setState
+                this.setState({ lat: position.coords.latitude})
+            },
+            (err) => console.log(err)
+        );
+
+    }
+     //React says we have to define render!!
+    render() {
+        
+        return <div>Latitude: {this.state.lat} </div>
+    }
+}
+
+ReactDOM.render(
+    <App />,
+    document.querySelector('#root')
+);
+
+3.)
+
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version5\seasons\src\index.js
+    //React says we have to define render!!
+    render() {
+        
+        //have error message and no latitude
+        if (this.state.errorMessage && !this.state.lat) {
+            return <div>Error: {this.state.errorMessage}</div>
+        }
+        //have no error message and have latitude
+        if (!this.state.errorMessage && this.state.lat) {
+            return <div>Latitude: {this.state.lat}</div>
+        }
+
+        //no error message and no error message
+        return <div>Loading!</div> //break
+    }
+
+ 4.)

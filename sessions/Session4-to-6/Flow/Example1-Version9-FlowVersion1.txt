@@ -1,0 +1,162 @@
+1.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version9\seasons\src\index.js
+ReactDOM.render(
+    <App />, //break
+    document.querySelector('#root')
+);
+
+
+2.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version9\seasons\src\index.js
+   constructor(props) {
+        super(props);
+
+        //THIS IS THE ONLY TIME we do direct assignment
+        // to this.state
+        this.state = { lat:null, errorMessage: ''};//break
+
+       
+
+    }
+
+3.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version9\seasons\src\index.js
+render() {
+        
+        //have error message and no latitude
+        if (this.state.errorMessage && !this.state.lat) {
+            return <div>Error: {this.state.errorMessage}</div>
+        }
+        //have no error message and have latitude
+        if (!this.state.errorMessage && this.state.lat) {
+            return <div>Latitude: {this.state.lat}</div>
+        }
+
+        //no error message and no error message
+        return <div>Loading!</div>//break
+    }
+
+4.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version9\seasons\src\index.js
+
+ 
+     componentDidMount() {
+            console.log('My component was rendered to the screen,componentDidMount() before calling geolocation');   //break
+            window.navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    console.log(position)
+                    //we called setState
+                    this.setState({ lat: position.coords.latitude})
+                    console.log("aftger set state, inside successfull getCurrentPosition");
+                    // we do not do this!!
+                    //this.state.lat = position.coords.latitude
+                },
+                (err) =>  {
+                        console.log(err)
+                        this.setState( { errorMessage: err.message})
+                        console.log("aftger set state, inside unsuccessfull getCurrentPosition, error:"+err);
+                }
+            );
+            console.log('My component was rendered to the screen,componentDidMount() after calling geolocation');   
+    }
+
+
+5.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version9\seasons\src\index.js
+
+ 
+   componentDidMount() {
+            console.log('My component was rendered to the screen,componentDidMount() before calling geolocation');   
+            window.navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    console.log(position)
+                    //we called setState
+                    this.setState({ lat: position.coords.latitude})
+                    console.log("aftger set state, inside successfull getCurrentPosition");
+                    // we do not do this!!
+                    //this.state.lat = position.coords.latitude
+                },
+                (err) =>  {
+                        console.log(err)
+                        this.setState( { errorMessage: err.message})
+                        console.log("aftger set state, inside unsuccessfull getCurrentPosition, error:"+err);
+                }
+            );
+            console.log('My component was rendered to the screen,componentDidMount() after calling geolocation');   //break
+    }
+
+
+
+
+6.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version9\seasons\src\index.js
+
+ReactDOM.render(
+    <App />,
+    document.querySelector('#root')//break
+);
+
+
+7.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version9\seasons\src\index.js
+
+ 
+    componentDidMount() {
+            console.log('My component was rendered to the screen,componentDidMount() before calling geolocation');   
+            window.navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    console.log(position)
+                    //we called setState
+                    this.setState({ lat: position.coords.latitude})
+                    console.log("aftger set state, inside successfull getCurrentPosition");
+                    // we do not do this!!
+                    //this.state.lat = position.coords.latitude
+                },
+                (err) =>  {
+                        console.log(err)
+                        this.setState( { errorMessage: err.message})//break
+                        console.log("aftger set state, inside unsuccessfull getCurrentPosition, error:"+err);
+                }
+            );
+            console.log('My component was rendered to the screen,componentDidMount() after calling geolocation');   
+    }
+
+
+
+9.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version9\seasons\src\index.js
+
+ 
+    //React says we have to define render!!
+    render() {
+        
+        //have error message and no latitude
+        if (this.state.errorMessage && !this.state.lat) {
+            return <div>Error: {this.state.errorMessage}</div>//break
+        }
+        //have no error message and have latitude
+        if (!this.state.errorMessage && this.state.lat) {
+            return <div>Latitude: {this.state.lat}</div>
+        }
+
+        //no error message and no error message
+        return <div>Loading!</div>
+    }
+
+10.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version9\seasons\src\index.js
+
+ 
+       componentDidUpdate() {
+           console.log('My component was just updated - it rerendered!'); //break
+       }
+
+
+11.)
+[HMR] Waiting for update signal from WDS...
+index.js:20 My component was rendered to the screen,componentDidMount() before calling geolocation
+index.js:36 My component was rendered to the screen,componentDidMount() after calling geolocation
+index.js:31 GeolocationPositionError {code: 1, message: "User denied Geolocation"}
+index.js:33 aftger set state, inside unsuccessfull getCurrentPosition, error:[object GeolocationPositionError]
+webpackHotDevClient.js:76 The development server has disconnected.
+Refresh the page if necessary.

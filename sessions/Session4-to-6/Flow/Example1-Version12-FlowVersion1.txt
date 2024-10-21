@@ -1,0 +1,53 @@
+1.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version12\seasons\src\SeasonDisplay.js
+export default SeasonDisplay;//break
+
+2.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version12\seasons\src\SeasonDisplay.js
+const SeasonDisplay = props => {
+    console.log("SeasonDisplay props.lat:"+props.lat);
+    const season = getSeason(props.lat, new Date().getMonth()); //break
+    console.log("season:"+season);
+    return <div>Season Display</div>;
+};
+
+3.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version12\seasons\src\SeasonDisplay.js
+/*
+lat=43.884312
+*/
+const getSeason = (lat, month) => {
+    //handle summer months in northern hemisphere month > 2 && month < 9 && lat > 0
+    //handle winter months in southern hemisphere month > 2 && month < 9 && lat <= 0
+
+    if (month > 2 && month < 9) {
+       return  lat > 0 ? 'summer' : 'winter';
+    } 
+    else 
+    {
+        //handle winter months in northern hemisphere month <=2 && month >= 9 && lat > 0 
+        //handle summer months in southern hemisphere month <=2 && month >= 9 && lat <= 0 
+        return lat > 0 ? 'winter' : 'summer';//break
+    }
+
+}
+4.)
+C:\workspace-UT-React-Jan-2021\Session5\Example1-Version12\seasons\src\SeasonDisplay.js
+/*
+season=winter
+*/
+const SeasonDisplay = props => {
+    console.log("SeasonDisplay props.lat:"+props.lat);
+    const season = getSeason(props.lat, new Date().getMonth()); 
+    console.log("season:"+season);//break
+    return <div>Season Display</div>;
+
+5.)
+My component was rendered to the screen,componentDidMount() before calling geolocation
+index.js:35 My component was rendered to the screen,componentDidMount() after calling geolocation
+index.js:22 GeolocationPosition {coords: GeolocationCoordinates, timestamp: 1615868443082}
+SeasonDisplay.js:19 SeasonDisplay props.lat:43.884312
+SeasonDisplay.js:21 season:winter
+index.js:25 after set state, inside successfull getCurrentPosition
+webpackHotDevClient.js:76 The development server has disconnected.
+Refresh the page if necessary.
