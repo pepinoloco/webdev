@@ -1,6 +1,14 @@
 import { StrictMode, Component } from 'react';
 import { createRoot } from 'react-dom/client';
 
+// Fallback coordinates for London
+const mockPosition = {
+  coords: {
+    latitude: 51.5074,
+    longitude: -0.1278,
+  }
+};
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +20,7 @@ class App extends Component {
       (position) => {
         this.setState({ lat: position.coords.latitude });
       },
-      (err) => console.log(err)
+      (err) => this.setState({ lat: mockPosition.coords.latitude })
     );
   }
 
