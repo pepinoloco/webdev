@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client';
 // Fallback coordinates for London
 const mockPosition = {
   coords: {
-    latitude: 51.5074,
+    latitude: 51.5075,
     longitude: -0.1278,
   }
 };
