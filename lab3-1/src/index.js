@@ -1,10 +1,11 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
+import UserForm from './UserForm';
 
 const App = () => {
   return (
     <div>
-      <div>hello</div>
+      <UserForm />
     </div>
   );
 }

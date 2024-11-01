@@ -1,13 +1,6 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-
-const App = () => {
-  return (
-    <div>
-      <div>hello</div>
-    </div>
-  );
-}
+import App from './App';
 
 const root = createRoot(document.getElementById('root'));
 root.render(
