@@ -1,0 +1,37 @@
+button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.text-viewer {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  min-height: 0px;
+  outline: none;
+  font-size: 14px;
+  font-family: monospace;
+  color: #333;
+  white-space: pre;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+.text-viewer-line-added {
+  color: green;
+  font-weight: bold;
+}
+
+.text-viewer-line-removed {
+  color: red;
+  text-decoration: line-through;
+}
