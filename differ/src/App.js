@@ -4,25 +4,25 @@ import TextViewerWithButton from './TextViewerWithButton';
 import './App.css';
 
 const App = () => {
-  const [leftViewerText, setLeftViewerText] = useState('');
-  const [rightViewerText, setRightViewerText] = useState('');
-  const [diffViewerText, setDiffViewerText] = useState('');
+  const [leftText, setLeftText] = useState('');
+  const [rightText, setRightText] = useState('');
+  const [diffText, setDiffText] = useState([]);
 
   const pasteLeftText = async () => {
     const clipboardText = await navigator.clipboard.readText();
-    setLeftViewerText(clipboardText)
+    setLeftText(clipboardText)
   };
   const pasteRighText = async () => {
     const clipboardText = await navigator.clipboard.readText();
-    setRightViewerText(clipboardText)
+    setRightText(clipboardText)
   };
   const compareLeftToRightText = () => {
-    if (leftViewerText === rightViewerText) {
-      setDiffViewerText("texts are indentical..")
+    if (leftText === rightText) {
+      setDiffText("texts are indentical..")
       return
     }
 
-    const diff = Diff.diffLines(leftViewerText, rightViewerText, { ignoreWhitespace: true });
+    const diff = Diff.diffLines(leftText, rightText, { ignoreWhitespace: true });
     let lines = diff.map((part, index) => {
       const className = part.added ? 'text-viewer-line-added' : part.removed ? 'text-viewer-line-removed' : '';
       return (
@@ -31,7 +31,7 @@ const App = () => {
         </div>
       );
     });
-    setDiffViewerText(lines);
+    setDiffText(lines);
   };
 
   const syncHorizontalScroll = (event) => {
@@ -50,7 +50,7 @@ const App = () => {
         <TextViewerWithButton
           buttonText="Paste"
           buttonOnClick={pasteLeftText}
-          viewerText={leftViewerText}
+          viewerText={leftText}
           viewerOnScroll={syncHorizontalScroll}
         /> 
       </div>
@@ -58,7 +58,7 @@ const App = () => {
         <TextViewerWithButton
           buttonText="Paste"
           buttonOnClick={pasteRighText}
-          viewerText={rightViewerText}
+          viewerText={rightText}
           viewerOnScroll={syncHorizontalScroll}
         /> 
       </div>
@@ -66,7 +66,7 @@ const App = () => {
         <TextViewerWithButton
           buttonText="Compare"
           buttonOnClick={compareLeftToRightText}
-          viewerText={diffViewerText}
+          viewerText={diffText}
           viewerOnScroll={syncHorizontalScroll}
         /> 
       </div>
