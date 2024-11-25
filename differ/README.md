@@ -1,4 +1,4 @@
-# Deffer - A simple online comparision tool 
+# Differ - A simple online comparision tool 
 
 React single page application to compare text buffers.
 
