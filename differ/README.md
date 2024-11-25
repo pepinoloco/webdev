@@ -11,6 +11,16 @@ List of prerequisites needed to build the project
 - React v18+ 
 - Diff.js v7+
 
-## React Components Composition
+## MVC (Model-View-Controller)
 
-![image](images/components.png)
+### Views
+
+![image](images/views.png)
+
+### Controller
+ 
+![image](images/controller.png)
+
+### Model
+
+![image](images/model.png)
