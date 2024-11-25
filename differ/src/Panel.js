@@ -1,6 +1,6 @@
-import './TextViewerWithButton.css';
+import './Panel.css';
 
-const TextViewerWithButton = ({buttonText, buttonOnClick, viewerText, viewerOnScroll}) => {
+const Panel = ({buttonText, buttonOnClick, viewerText, viewerOnScroll}) => {
   return (
     <div>
       <button onClick={buttonOnClick}>{buttonText}</button>
@@ -9,4 +9,4 @@ const TextViewerWithButton = ({buttonText, buttonOnClick, viewerText, viewerOnSc
   );
 };
 
-export default TextViewerWithButton;
+export default Panel;

@@ -1,6 +1,7 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import * as Diff from 'diff'
-import TextViewerWithButton from './TextViewerWithButton';
+
+import Panel from './Panel';
 import './App.css';
 
 const App = () => {
@@ -47,28 +48,28 @@ const App = () => {
   return (
     <div className="app-container">
       <div className="panel-container">
-        <TextViewerWithButton
+        <Panel
           buttonText="Paste"
           buttonOnClick={pasteLeftText}
           viewerText={leftText}
           viewerOnScroll={syncHorizontalScroll}
-        /> 
+        />
       </div>
       <div className="panel-container">
-        <TextViewerWithButton
+        <Panel
           buttonText="Paste"
           buttonOnClick={pasteRighText}
           viewerText={rightText}
           viewerOnScroll={syncHorizontalScroll}
-        /> 
+        />
       </div>
       <div className="panel-container">
-        <TextViewerWithButton
+        <Panel
           buttonText="Compare"
           buttonOnClick={compareLeftToRightText}
           viewerText={diffText}
           viewerOnScroll={syncHorizontalScroll}
-        /> 
+        />
       </div>
     </div>
   );
