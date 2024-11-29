@@ -2,21 +2,28 @@ import { useState } from 'react';
 import * as Diff from 'diff'
 
 import Panel from './components/Panel';
+import Grid from './components/Grid';
+import calculateStats from './utils/calculateStats';
 import './App.css';
 
 const App = () => {
   const [leftText, setLeftText] = useState('');
   const [rightText, setRightText] = useState('');
   const [diffText, setDiffText] = useState([]);
+  const [statsData, setStatsData] = useState(calculateStats('',''));
 
   const pasteLeftText = async () => {
     const clipboardText = await navigator.clipboard.readText();
     setLeftText(clipboardText.replace(/\n$/, ''));
+    setStatsData(calculateStats(clipboardText, rightText));
   };
+
   const pasteRighText = async () => {
     const clipboardText = await navigator.clipboard.readText();
     setRightText(clipboardText.replace(/\n$/, ''));
+    setStatsData(calculateStats(leftText, clipboardText));
   };
+
   const compareLeftToRightText = () => {
     if (leftText === rightText) {
       setDiffText("texts are indentical..")
@@ -60,6 +67,7 @@ const App = () => {
   };
 
   return (
+    <div>
     <div className="app-container">
       <div className="panel-container">
         <Panel
@@ -85,6 +93,8 @@ const App = () => {
           viewerOnScroll={syncHorizontalScroll}
         />
       </div>
+    </div>
+    <Grid data={statsData}/>
     </div>
   );
 }
