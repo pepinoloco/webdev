@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import * as Diff from 'diff'
 
-import Panel from './Panel';
+import Panel from './components/Panel';
 import './App.css';
 
 const App = () => {
@@ -11,11 +11,11 @@ const App = () => {
 
   const pasteLeftText = async () => {
     const clipboardText = await navigator.clipboard.readText();
-    setLeftText(clipboardText)
+    setLeftText(clipboardText.replace(/\n$/, ''));
   };
   const pasteRighText = async () => {
     const clipboardText = await navigator.clipboard.readText();
-    setRightText(clipboardText)
+    setRightText(clipboardText.replace(/\n$/, ''));
   };
   const compareLeftToRightText = () => {
     if (leftText === rightText) {
@@ -23,15 +23,29 @@ const App = () => {
       return
     }
 
-    const diff = Diff.diffLines(leftText, rightText, { ignoreWhitespace: true });
-    let lines = diff.map((part, index) => {
-      const className = part.added ? 'text-viewer-line-added' : part.removed ? 'text-viewer-line-removed' : '';
-      return (
-        <div key={index} className={className}>
+    let lines;
+    if(leftText.includes('\n') || rightText.includes('\n')) {
+      const diff = Diff.diffLines(leftText, rightText, { ignoreWhitespace: true });
+      lines = diff.map((part, index) => {
+        const className = part.added ? 'text-viewer-token-added' : part.removed ? 'text-viewer-token-removed' : '';
+        return (
+          <div key={index} className={className}>
           {part.value}
-        </div>
-      );
-    });
+         </div>
+        );
+     });
+    }
+    else {
+      const diff = Diff.diffChars(leftText, rightText);
+      lines = diff.map((part, index) => {
+        const className = part.added ? 'text-viewer-token-added' : part.removed ? 'text-viewer-token-removed' : '';
+        return (
+          <span key={index} className={className}>
+          {part.value}
+         </span>
+        );
+     });
+    }
     setDiffText(lines);
   };
 

@@ -26,12 +26,12 @@ button:hover {
   overflow-y: auto;
 }
 
-.text-viewer-line-added {
+.text-viewer-token-added {
   color: green;
   font-weight: bold;
 }
 
-.text-viewer-line-removed {
+.text-viewer-token-removed {
   color: red;
   text-decoration: line-through;
 }
