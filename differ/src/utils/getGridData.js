@@ -1,4 +1,4 @@
-export default function calculateStats(leftText, rightText) {
+export default function getGridData(leftText, rightText) {
   function countRows(text) {
     if (text === '') {
       return 0;

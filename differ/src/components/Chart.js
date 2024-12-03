@@ -2,8 +2,8 @@ import { AgCharts } from 'ag-charts-react';
 
 const Chart = ({ data }) => {
   const series = [
-    { type: 'line', xKey: 'line', yKey: 'left', yName: 'Left' },
-    { type: 'line', xKey: 'line', yKey: 'right', yName: 'Right' },
+    { type: 'bar', xKey: 'line', yKey: 'left', yName: 'removed', fill: 'red' },
+    { type: 'bar', xKey: 'line', yKey: 'right', yName: 'added', fill: 'green' },
   ];
 
   return (
