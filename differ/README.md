@@ -2,7 +2,7 @@
 
 React single page application to compare text buffers.
 
-![image](images/screenshot.png)
+![image](docs/images/screenshot.png)
 
 ## Dependencies 
 
@@ -15,12 +15,12 @@ List of prerequisites needed to build the project
 
 ### Views
 
-![image](images/views.png)
+![image](docs/images/views.png)
 
 ### Controller
  
-![image](images/controller.png)
+![image](docs/images/controller.png)
 
 ### Model
 
-![image](images/model.png)
+![image](docs/images/model.png)

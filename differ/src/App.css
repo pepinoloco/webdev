@@ -15,3 +15,8 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 15px;
 }
+
+.grid-container {
+  display: flex;
+  width: 96%;
+}

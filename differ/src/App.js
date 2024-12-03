@@ -3,25 +3,30 @@ import * as Diff from 'diff'
 
 import Panel from './components/Panel';
 import Grid from './components/Grid';
+import Chart from './components/Chart';
 import calculateStats from './utils/calculateStats';
+import calculateLinesLength from './utils/calculateLinesLength';
 import './App.css';
 
 const App = () => {
   const [leftText, setLeftText] = useState('');
   const [rightText, setRightText] = useState('');
   const [diffText, setDiffText] = useState([]);
-  const [statsData, setStatsData] = useState(calculateStats('',''));
+  const [gridData, setGridData] = useState(calculateStats('',''));
+  const [chartData, setChartData] = useState(calculateLinesLength('',''));
 
   const pasteLeftText = async () => {
     const clipboardText = await navigator.clipboard.readText();
     setLeftText(clipboardText.replace(/\n$/, ''));
-    setStatsData(calculateStats(clipboardText, rightText));
+    setGridData(calculateStats(clipboardText, rightText));
+    setChartData(calculateLinesLength(clipboardText, rightText));
   };
 
   const pasteRighText = async () => {
     const clipboardText = await navigator.clipboard.readText();
     setRightText(clipboardText.replace(/\n$/, ''));
-    setStatsData(calculateStats(leftText, clipboardText));
+    setGridData(calculateStats(leftText, clipboardText));
+    setChartData(calculateLinesLength(leftText, clipboardText));
   };
 
   const compareLeftToRightText = () => {
@@ -94,7 +99,10 @@ const App = () => {
         />
       </div>
     </div>
-    <Grid data={statsData}/>
+      <div className="grid-container">
+        <Grid data={gridData}/>
+        <Chart data={chartData}/>
+      </div>
     </div>
   );
 }

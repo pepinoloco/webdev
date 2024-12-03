@@ -20,6 +20,7 @@ button:hover {
   outline: none;
   font-size: 14px;
   font-family: monospace;
+  background-color: #fff;
   color: #333;
   white-space: pre;
   overflow-x: auto;
