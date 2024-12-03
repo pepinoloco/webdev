@@ -1,92 +1,72 @@
 import { useState } from 'react';
+
+// Third-party text comparion library
 import * as Diff from 'diff'
 
+// Custom components
 import Panel from './components/Panel';
-import Grid from './components/Grid';
 import Chart from './components/Chart';
-import getGridData from './utils/getGridData';
-import clearChartData from './utils/clearChartData';
-import calculateLinesLength from './utils/calculateLinesLength';
+
+// Data for vizualization by AG Chart component
+import getChartDataDefault from './utils/getChartDataDefault';
+import getChartDataLines from './utils/getChartDataLines';
+import getChartDataChars from './utils/getChartDataChars';
+
 import './App.css';
 
 const App = () => {
   const [leftText, setLeftText] = useState('');
   const [rightText, setRightText] = useState('');
   const [diffText, setDiffText] = useState([]);
-  const [gridData, setGridData] = useState(getGridData('',''));
-  const [chartData, setChartData] = useState(clearChartData);
+  const [chartData, setChartData] = useState(getChartDataDefault);
 
+  // Callack for left Paste button click event
   const pasteLeftText = async () => {
     const clipboardText = await navigator.clipboard.readText();
     setLeftText(clipboardText.replace(/\n$/, ''));
-    setGridData(getGridData(clipboardText, rightText));
   };
 
+  // Callback for right Paste button click event
   const pasteRighText = async () => {
     const clipboardText = await navigator.clipboard.readText();
     setRightText(clipboardText.replace(/\n$/, ''));
-    setGridData(getGridData(leftText, clipboardText));
   };
 
+  // Callback for Compare button click event
   const compareLeftToRightText = () => {
     if (leftText === rightText) {
-      setDiffText("texts are indentical..")
+      setDiffText('texts are indentical..')
+      setChartData(getChartDataDefault());
       return
     }
 
-    let lines;
-    let diffs = [];
+    let renderedDiff; //rendered Diff results for compare text area
+    let chartDataBuffer; //captures chartDate to be renedered by AG Chart 
+
+    // Line-by-line comparison for multiline text, char-by-char comparison for single line
     if(leftText.includes('\n') || rightText.includes('\n')) {
       const diff = Diff.diffLines(leftText, rightText, { ignoreWhitespace: true });
-
-      let line = 0;
-      for (let i = 0; i < diff.length; i++) {
-        let left = 0;
-        let right = 0
-        const part = diff[i];
-
-        const item = part.value.split('\n');
-        for (let j = 0; j < item.length; j++) {
-          if (part.added) {
-            right = item[j].length;
-          }
-          else if (part.removed) {
-            left = item[j].length * (-1);
-          }
-          
-          line = line + 1;
-          diffs.push({
-            line: line,
-            left: left,
-            right: right,
-          });
-        }
-      }
-
-      lines = diff.map((part, index) => {
+      renderedDiff = diff.map((part, index) => {
         const className = part.added ? 'text-viewer-token-added' : part.removed ? 'text-viewer-token-removed' : '';
-        return (
-          <div key={index} className={className}>
-          {part.value}
-         </div>
-        );
+        return <div key={index} className={className}>{part.value}</div>;
      });
+     chartDataBuffer = getChartDataLines(diff);
     }
     else {
       const diff = Diff.diffChars(leftText, rightText);
-      lines = diff.map((part, index) => {
+      renderedDiff = diff.map((part, index) => {
         const className = part.added ? 'text-viewer-token-added' : part.removed ? 'text-viewer-token-removed' : '';
-        return (
-          <span key={index} className={className}>
-          {part.value}
-         </span>
-        );
+        return <span key={index} className={className}>{part.value}</span>;
      });
+     chartDataBuffer = getChartDataChars(diff);
     }
-    setDiffText(lines);
-    setChartData(diffs);
+
+    // Re-render compare and chart components with new data
+    setDiffText(renderedDiff);
+    setChartData(chartDataBuffer);
   };
 
+  // Synchronized schrolling of all three components (left, right and compare text areas)
   const syncHorizontalScroll = (event) => {
     const scrollLeft = event.target.scrollLeft;
     const viewers = document.querySelectorAll('.text-viewer');
@@ -97,6 +77,7 @@ const App = () => {
     });
   };
 
+  // Renders three instances of Panel component (left, right and compare) and AG chart component
   return (
     <div>
     <div className="app-container">
@@ -125,8 +106,7 @@ const App = () => {
         />
       </div>
     </div>
-      <div className="grid-container">
-        <Grid data={gridData}/>
+      <div className="chart-container">
         <Chart data={chartData}/>
       </div>
     </div>

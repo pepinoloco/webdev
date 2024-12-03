@@ -16,7 +16,7 @@
   padding: 15px;
 }
 
-.grid-container {
-  display: flex;
-  width: 96%;
+.chart-container {
+  width: 90%;
+  margin: 30px;
 }
